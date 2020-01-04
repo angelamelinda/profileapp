@@ -1,6 +1,13 @@
+import heroImage from "../assets/work-desk__dustin-lee.jpg";
+import logo from "../assets/y-logo-white.png";
+
 export const PROFILE_INFORMATION = {
   NAME: "Angela Melinda",
   JOB: "Consult, Design, and Develop Website"
+};
+
+export const HEADER = {
+  LOGO: logo
 };
 
 export const NOTIFICATION_PANEL = {
@@ -8,6 +15,7 @@ export const NOTIFICATION_PANEL = {
 };
 
 export const HERO = {
+  IMAGE: heroImage,
   BUTTON: "Let's Make Contact",
   TAGLINE: `Hello! I'm ${PROFILE_INFORMATION.NAME}`,
   SUBTITLE: {
