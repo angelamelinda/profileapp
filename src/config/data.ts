@@ -77,4 +77,6 @@ export const NEWSLETTER_PANEL = {
   }
 };
 
-export const FOOTER = `© 2019 ${PROFILE_INFORMATION.NAME}. All rights reserved.​`;
+export const FOOTER = {
+  COPYRIGHT: `© 2019 ${PROFILE_INFORMATION.NAME}. All rights reserved.​`
+};
