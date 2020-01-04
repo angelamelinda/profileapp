@@ -68,3 +68,5 @@ export const NEWSLETTER_PANEL = {
     BUTTON: "Count Me In!"
   }
 };
+
+export const FOOTER = `© 2019 ${PROFILE_INFORMATION.NAME}. All rights reserved.​`;
