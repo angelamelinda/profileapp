@@ -1,15 +1,23 @@
 import React, { FC } from "react";
 import { FOOTER } from "../../config/data";
+import {
+  FooterBar,
+  FooterContainer,
+  FooterContent,
+  FooterCopyright
+} from "./index.styled";
 
 const Footer: FC = () => {
   return (
-    <div id="footer">
-      <div className="container">
-        <div id="footer__copyright">
-          <p>{FOOTER.COPYRIGHT}</p>
-        </div>
-      </div>
-    </div>
+    <FooterBar id="footer">
+      <FooterContainer className="container">
+        <FooterContent id="footer__content">
+          <FooterCopyright id="footer__content">
+            {FOOTER.COPYRIGHT}
+          </FooterCopyright>
+        </FooterContent>
+      </FooterContainer>
+    </FooterBar>
   );
 };
 

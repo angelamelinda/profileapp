@@ -3,7 +3,8 @@ export const COLOR = {
   DARK_BLUE: "#004a75",
   ORANGE: "#ff8000",
   DARK_ORANGE: "#cc6600",
-  SMOKE_GREY: "#e5e5e5"
+  SMOKE_GREY: "#e5e5e5",
+  WHITE: "#fff"
 };
 
 export const CONTAINERS = {
@@ -17,3 +18,12 @@ export const MEDIA_SCREEN = {
 };
 
 export const NOTIFICATION_PANEL_TIMEOUT = 10 * 60 * 1000;
+
+export const FONT_WEIGHT = {
+  THIN: 100,
+  LIGHT: 300,
+  REGULAR: 400,
+  MEDIUM: 500,
+  BOLD: 700,
+  BLACK: 900
+};

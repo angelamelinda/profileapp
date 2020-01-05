@@ -17,7 +17,7 @@ export const NOTIFICATION_PANEL = {
 export const HERO = {
   IMAGE: heroImage,
   BUTTON: "Let's Make Contact",
-  TAGLINE: `Hello! I'm ${PROFILE_INFORMATION.NAME}`,
+  HEADLINE: `Hello! I'm ${PROFILE_INFORMATION.NAME}`,
   SUBTITLE: {
     LINE_1: "Have something great in mind? Feel free to contact me.",
     LINE_2: "I'll help you to make it happen."

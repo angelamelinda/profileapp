@@ -1,7 +1,14 @@
 import React from "react";
+import { GlobalStyle } from "./index.styled";
+import Profile from "./containers/Profile";
 
 const App: React.FC = () => {
-  return <div className="App">App</div>;
+  return (
+    <>
+      <GlobalStyle />
+      <Profile />
+    </>
+  );
 };
 
 export default App;
