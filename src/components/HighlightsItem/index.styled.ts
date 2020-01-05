@@ -35,7 +35,7 @@ export const HightlightsItemColumn = styled.div`
 `;
 
 export const HightlightsItemWrapper = styled.div`
-  padding: 16px;
+  padding: 20px;
   border: 1px solid ${COLOR.SILVER_CHALICE};
   height: 100%;
 `;

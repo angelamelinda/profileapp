@@ -65,20 +65,15 @@ export const HeroButtonWrapper = styled.div`
 export const HeroButton = styled.button`
   background: transparent;
   border: 1px solid ${COLOR.WHITE};
-  border-radius: 4px;
-  cursor: pointer;
   color: ${COLOR.WHITE};
   margin-left: auto;
   margin-right: auto;
   height: 56px;
-  width: 100%;
   max-width: 226px;
   text-transform: uppercase;
   font-weight: ${FONT_WEIGHT.BOLD};
-  font-size: calc(16 / 16 * 1rem);
   letter-spacing: -0.8px;
   line-height: 54px;
-  transition: all 0.5s ease;
 
   &:hover {
     background: ${COLOR.WHITE};

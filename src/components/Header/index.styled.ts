@@ -3,6 +3,7 @@ import styled from "styled-components";
 export const HeaderBar = styled.div`
   position: absolute;
   z-index: 99;
+  width: 100%;
 `;
 
 export const HeaderContainer = styled.div`
