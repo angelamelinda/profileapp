@@ -10,7 +10,6 @@ import {
 import { NOTIFICATION_PANEL } from "../../config/data";
 
 interface INotificationPanel {
-  isComing: boolean;
   isLeaving: boolean;
   isActive: boolean;
   handleClickNotification: () => void;
@@ -18,16 +17,14 @@ interface INotificationPanel {
 
 const NotificationPanel: FC<INotificationPanel> = ({
   handleClickNotification,
-  isComing,
   isLeaving,
   isActive
 }) => {
   return (
     <NotificationPanelWrapper
       id="notification-panel"
-      className={`${isLeaving ? "slideInUp animated" : ""} ${
-        isComing ? "slideInDown animated" : ""
-      } ${isActive ? "notification--active" : "notification--not-active"} `}>
+      className={`${isLeaving ? "slideInUp animated" : ""} 
+			 ${isActive ? "notification--active" : "notification--not-active"} `}>
       <NotificationPanelContainer
         id="notification-panel__container"
         className="container">

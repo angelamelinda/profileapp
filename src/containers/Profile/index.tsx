@@ -8,24 +8,8 @@ import NotificationPanel from "../../components/NotificationPanel";
 class Profile extends PureComponent<{}> {
   state = {
     notificationIsActive: true,
-    notificationIsComing: false,
     notificationIsLeaving: false
   };
-
-  componentDidMount() {
-    this.setState(
-      {
-        notificationIsComing: true
-      },
-      () => {
-        setTimeout(() => {
-          this.setState({
-            notificationIsComing: false
-          });
-        }, 1000);
-      }
-    );
-  }
 
   handleClickNotification = () => {
     this.setState(
@@ -48,15 +32,10 @@ class Profile extends PureComponent<{}> {
   };
 
   render() {
-    const {
-      notificationIsActive,
-      notificationIsComing,
-      notificationIsLeaving
-    } = this.state;
+    const { notificationIsActive, notificationIsLeaving } = this.state;
     return (
       <>
         <NotificationPanel
-          isComing={notificationIsComing}
           isLeaving={notificationIsLeaving}
           isActive={notificationIsActive}
           handleClickNotification={this.handleClickNotification}
