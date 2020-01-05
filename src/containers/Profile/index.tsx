@@ -2,6 +2,7 @@ import React, { PureComponent } from "react";
 import Header from "../../components/Header";
 import Hero from "../../components/Hero";
 import Footer from "../../components/Footer";
+import HighlightsPanel from "../../components/HighlightsPanel";
 
 class Profile extends PureComponent<{}> {
   render() {
@@ -9,6 +10,7 @@ class Profile extends PureComponent<{}> {
       <>
         <Header />
         <Hero />
+        <HighlightsPanel />
         <Footer />
       </>
     );

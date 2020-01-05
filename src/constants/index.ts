@@ -4,7 +4,8 @@ export const COLOR = {
   ORANGE: "#ff8000",
   DARK_ORANGE: "#cc6600",
   SMOKE_GREY: "#e5e5e5",
-  WHITE: "#fff"
+  WHITE: "#fff",
+  SILVER_CHALICE: "#a7a7a7"
 };
 
 export const CONTAINERS = {
@@ -14,6 +15,7 @@ export const CONTAINERS = {
 };
 
 export const MEDIA_SCREEN = {
+  LARGE: 960,
   SMALL: 480
 };
 
