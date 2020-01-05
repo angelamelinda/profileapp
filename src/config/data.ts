@@ -73,7 +73,7 @@ export const NEWSLETTER_PANEL = {
   SUBTITLE:
     "I write articles related to web technologies, such as design trends, development tools, UI/UX case studies and reviews, and more. Sign up to my newsletter to get them all.",
   FORM_CONTACT: {
-    BUTTON: "Count Me In!"
+    BUTTON: "Count me in!"
   }
 };
 

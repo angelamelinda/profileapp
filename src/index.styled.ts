@@ -63,25 +63,25 @@ h1, h2, h3, h4, h5, h6, p {
   animation-fill-mode: forwards;
 }
 
-.slideInDown {
-  animation-name: slideInDown;
+.slide__down--appear {
+  animation-name: slideDownAppear;
 }
 
-.slideInUp {
-  animation-name: slideInUp;
+.slide__down--disappear {
+  animation-name: slideDownDisappear;
 }
 
-.slideInLeft {
-  animation-name: slideInLeft;
+.slide__up--appear {
+  animation-name: slideUpAppear;
 }
 
-.slideInRight {
-  animation-name: slideInRight;
+.slide__up--disappear{
+  animation-name: slideUpDisappear;
 }
 
-@keyframes slideInDown {
+@keyframes slideDownAppear {
   from {
-    transform: translate3d(0, -100%, 0);
+    transform: translate3d(0, 100%, 0);
     visibility: visible;
   }
 
@@ -90,9 +90,20 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
-@keyframes slideInLeft {
+@keyframes slideDownDisappear {
   from {
-    transform: translate3d(-100%, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 100%, 0);
+  }
+}
+
+@keyframes slideUpAppear {
+  from {
+    transform: translate3d(0, -100, 0);
     visibility: visible;
   }
 
@@ -101,18 +112,7 @@ h1, h2, h3, h4, h5, h6, p {
   }
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translate3d(100%, 0, 0);
-    visibility: visible;
-  }
-
-  to {
-    transform: translate3d(0, 0, 0);
-  }
-}
-
-@keyframes slideInUp {
+@keyframes slideUpDisappear {
   from {
     transform: translate3d(0, 0, 0);
     visibility: visible;

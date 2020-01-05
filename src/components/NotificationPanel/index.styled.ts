@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { COLOR } from "../../constants";
+import { COLOR, MEDIA_SCREEN } from "../../constants";
 
 export const NotificationPanelWrapper = styled.div`
   padding-top: 20px;
@@ -10,6 +10,7 @@ export const NotificationPanelWrapper = styled.div`
   transition: all 0.5s ease;
   position: sticky;
   top: 0;
+  box-shadow: 0 0 0 2px rgba(0, 0, 0, 0.2);
 
   &.notification--not-active {
     display: none;
@@ -22,6 +23,10 @@ export const NotificationPanelContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+
+  @media (max-width: ${MEDIA_SCREEN.SMALL}px) {
+    flex-wrap: wrap;
+  }
 `;
 
 export const NotificationPanelText = styled.div`
@@ -39,6 +44,12 @@ export const NotificationPanelText = styled.div`
 export const NotificationPanelButtonWrapper = styled.div`
   width: 100%;
   max-width: 80px;
+  margin-left: 10px;
+
+  @media (max-width: ${MEDIA_SCREEN.SMALL}px) {
+    margin-left: 0;
+    margin-top: 10px;
+  }
 `;
 
 export const NotificationPanelButton = styled.button`

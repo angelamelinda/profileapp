@@ -23,7 +23,7 @@ const NotificationPanel: FC<INotificationPanel> = ({
   return (
     <NotificationPanelWrapper
       id="notification-panel"
-      className={`${isLeaving ? "slideInUp animated" : ""} 
+      className={`${isLeaving ? "slide__up--disappear animated" : ""} 
 			 ${isActive ? "notification--active" : "notification--not-active"} `}>
       <NotificationPanelContainer
         id="notification-panel__container"
