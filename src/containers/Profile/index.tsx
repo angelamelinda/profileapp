@@ -8,29 +8,57 @@ import NewsletterPanel from "../../components/NewsletterPanel";
 import { NOTIFICATION_PANEL_TIMEOUT } from "../../constants";
 import { setCookie, getCookie } from "../../helpers";
 
-class Profile extends PureComponent<{}> {
+interface IProfileState {
+  notificationIsActive: boolean;
+  notificationIsLeaving: boolean;
+  newsletterIsActive: boolean;
+  newsletterIsLeaving: boolean;
+  newsletterIsComing: boolean;
+  documentHeight: number;
+  isScrollAfterPoint: boolean;
+}
+
+interface IProfileProps {}
+
+class Profile extends PureComponent<IProfileProps, IProfileState> {
   private interval: number = -1;
 
-  state = {
-    notificationIsActive: true,
-    notificationIsLeaving: false,
-    newsletterIsActive: false,
-    newsletterIsLeaving: false,
-    newsletterIsComing: false
-  };
+  constructor(props: IProfileProps) {
+    super(props);
+    this.state = {
+      notificationIsActive: true,
+      notificationIsLeaving: false,
+      newsletterIsActive: false,
+      newsletterIsLeaving: false,
+      newsletterIsComing: false,
+      documentHeight: window.innerHeight,
+      isScrollAfterPoint: false
+    };
+  }
 
   componentDidMount() {
+    this.handleScroll();
     this.timerInterval();
+    this.checkNewsletterPanel();
+
+    window.addEventListener("resize", this.handleResize);
+    window.addEventListener("scroll", this.handleScroll);
   }
 
   componentWillUnmount() {
+    window.removeEventListener("resize", this.handleResize);
+    window.removeEventListener("scroll", this.handleScroll);
     clearInterval(this.interval);
   }
 
-  checkNewsletterPanel = () => {
+  componentDidUpdate(_: IProfileProps, prevState: IProfileState) {
     const resultGetCookie = getCookie("cermati-newsletter");
-    if (!resultGetCookie) {
-      clearInterval(this.interval);
+
+    if (
+      prevState.isScrollAfterPoint !== this.state.isScrollAfterPoint &&
+      this.state.isScrollAfterPoint &&
+      !resultGetCookie
+    ) {
       this.setState(
         {
           newsletterIsActive: true,
@@ -44,7 +72,49 @@ class Profile extends PureComponent<{}> {
           }, 1000);
         }
       );
-    } else {
+    } else if (
+      prevState.isScrollAfterPoint !== this.state.isScrollAfterPoint &&
+      !this.state.isScrollAfterPoint &&
+      !resultGetCookie
+    ) {
+      this.setState(
+        {
+          newsletterIsLeaving: true
+        },
+        () => {
+          setTimeout(() => {
+            this.setState({
+              newsletterIsActive: false,
+              newsletterIsLeaving: false
+            });
+          }, 1000);
+        }
+      );
+    }
+  }
+
+  checkNewsletterPanel = () => {
+    const resultGetCookie = getCookie("cermati-newsletter");
+
+    if (
+      !resultGetCookie &&
+      this.state.isScrollAfterPoint &&
+      !this.state.newsletterIsActive
+    ) {
+      this.setState(
+        {
+          newsletterIsActive: true,
+          newsletterIsComing: true
+        },
+        () => {
+          setTimeout(() => {
+            this.setState({
+              newsletterIsComing: false
+            });
+          }, 1000);
+        }
+      );
+    } else if (resultGetCookie) {
       this.setState({
         newsletterIsActive: false
       });
@@ -52,9 +122,32 @@ class Profile extends PureComponent<{}> {
   };
 
   timerInterval = () => {
+    const resultGetCookie =
+      getCookie("cermati-newsletter") || NOTIFICATION_PANEL_TIMEOUT;
+
     this.interval = setInterval(() => {
       this.checkNewsletterPanel();
-    }, 1000);
+    }, resultGetCookie);
+  };
+
+  handleScroll = () => {
+    const positionY = (document.documentElement as any).scrollTop;
+    if (positionY >= this.state.documentHeight * 0.33) {
+      this.setState({
+        isScrollAfterPoint: true
+      });
+    } else {
+      this.setState({
+        isScrollAfterPoint: false
+      });
+    }
+  };
+
+  handleResize = () => {
+    this.setState({
+      documentHeight:
+        (document.documentElement as HTMLElement).offsetHeight || 0
+    });
   };
 
   handleClickNotification = () => {
@@ -83,7 +176,11 @@ class Profile extends PureComponent<{}> {
         newsletterIsLeaving: true
       },
       () => {
-        setCookie("cermati-newsletter", "hidden", NOTIFICATION_PANEL_TIMEOUT);
+        setCookie(
+          "cermati-newsletter",
+          NOTIFICATION_PANEL_TIMEOUT,
+          NOTIFICATION_PANEL_TIMEOUT
+        );
         setTimeout(() => {
           this.setState({
             newsletterIsLeaving: false,

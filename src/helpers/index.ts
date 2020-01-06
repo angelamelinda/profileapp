@@ -1,6 +1,6 @@
 export function setCookie(
   cname: string,
-  cvalue: string | boolean,
+  cvalue: string | boolean | number,
   expiredTime: number
 ) {
   var d = new Date();
